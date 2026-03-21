@@ -41,7 +41,6 @@
 
     input[type=text], input[type=search], input[type=number] { width: 100%; padding: 11px 14px; font-size: 15px; border: 0.5px solid var(--border-strong); border-radius: var(--radius-md); background: var(--surface); color: var(--text); outline: none; -webkit-appearance: none; }
     input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(83,74,183,0.12); }
-    input[readonly] { background: var(--bg); color: var(--accent); font-weight: 600; border-color: var(--border); }
     select { width: 100%; padding: 11px 14px; font-size: 14px; border: 0.5px solid var(--border-strong); border-radius: var(--radius-md); background: var(--surface); color: var(--text); outline: none; -webkit-appearance: none; }
 
     .search-wrap { position: relative; margin-bottom: 10px; }
@@ -105,6 +104,11 @@
     .btn-icon:active { color: var(--orange); }
     .empty-list { font-size: 13px; color: var(--text-hint); text-align: center; padding: 24px 0; }
 
+    /* DB STATUS */
+    .db-status { font-size: 12px; color: var(--text-hint); text-align: center; padding: 6px; margin-bottom: 8px; }
+    .db-status.loaded { color: var(--green); }
+    .db-status.error { color: var(--orange); }
+
     .date-nav { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
     .date-nav-btn { background: none; border: 0.5px solid var(--border-strong); border-radius: var(--radius-md); padding: 7px 14px; font-size: 18px; cursor: pointer; color: var(--text); }
     .date-nav-btn:disabled { opacity: 0.3; cursor: default; }
@@ -115,7 +119,6 @@
     .search-scan-row { display: flex; gap: 8px; margin-bottom: 10px; }
     .search-scan-row .search-wrap { flex: 1; margin-bottom: 0; }
     .btn-scan { padding: 11px 14px; font-size: 18px; background: var(--accent-light); border: 0.5px solid var(--accent); border-radius: var(--radius-md); cursor: pointer; flex-shrink: 0; color: var(--accent); }
-    .btn-scan:active { opacity: 0.8; }
     .j-selected { font-size: 13px; color: var(--accent); font-weight: 500; margin: 6px 0; display: none; }
     .j-unit-info { font-size: 11px; color: var(--text-muted); margin-bottom: 6px; display: none; }
     .j-mass-row { display: flex; align-items: center; gap: 8px; margin: 8px 0; }
@@ -125,25 +128,15 @@
     .j-add-row { display: flex; gap: 8px; }
     .j-add-row select { flex: 1; font-size: 13px; padding: 9px 11px; }
 
-    /* SCANNER */
-    .scanner-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: #000; z-index: 200; display: none; flex-direction: column; }
-    .scanner-overlay.open { display: flex; }
-    .scanner-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; background: rgba(0,0,0,0.8); }
-    .scanner-title { color: #fff; font-size: 16px; font-weight: 600; }
-    .scanner-close { background: none; border: 1px solid rgba(255,255,255,0.4); color: #fff; font-size: 14px; font-weight: 600; cursor: pointer; padding: 6px 14px; border-radius: 20px; }
-    #scanner-container { flex: 1; position: relative; overflow: hidden; }
-    #scanner-container video { width: 100% !important; height: 100% !important; object-fit: cover !important; }
-    /* Masquer les éléments visuels par défaut de html5-qrcode */
-    #qr-shaded-region { border-color: rgba(83,74,183,0.8) !important; }
-    .scanner-hint { position: absolute; bottom: 0; left: 0; right: 0; text-align: center; color: rgba(255,255,255,0.85); font-size: 13px; padding: 14px; background: rgba(0,0,0,0.55); z-index: 10; }
-    .scanner-loading { color: #fff; text-align: center; padding: 40px 20px; font-size: 14px; }
-
-    /* SCAN RESULT */
+    /* SCAN RESULT avec nom éditable */
     .scan-result-card { background: var(--green-bg); border: 0.5px solid var(--green); border-radius: var(--radius-lg); padding: 14px; margin-bottom: 12px; display: none; }
-    .scan-result-title { font-size: 13px; font-weight: 600; color: var(--green); margin-bottom: 4px; }
-    .scan-result-name { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 2px; }
-    .scan-result-info { font-size: 12px; color: var(--text-muted); margin-bottom: 6px; }
-    .scan-result-saved { font-size: 11px; color: var(--green); font-style: italic; }
+    .scan-result-title { font-size: 12px; font-weight: 600; color: var(--green); margin-bottom: 8px; }
+    .scan-name-row { display: flex; gap: 8px; align-items: center; margin-bottom: 6px; }
+    .scan-name-row input { flex: 1; font-size: 14px; padding: 9px 12px; border-color: var(--green); }
+    .scan-name-row input:focus { border-color: var(--green); box-shadow: 0 0 0 3px rgba(15,110,86,0.15); }
+    .btn-scan-confirm { padding: 9px 14px; font-size: 13px; font-weight: 600; background: var(--green); color: #fff; border: none; border-radius: var(--radius-md); cursor: pointer; white-space: nowrap; flex-shrink: 0; }
+    .scan-result-info { font-size: 12px; color: var(--text-muted); }
+    .scan-result-saved { font-size: 11px; color: var(--green); font-style: italic; margin-top: 4px; display: none; }
 
     .total-card { background: var(--accent-light); border-radius: var(--radius-lg); padding: 14px; margin-bottom: 14px; }
     .total-title { font-size: 12px; font-weight: 600; color: var(--accent); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.4px; }
@@ -174,7 +167,6 @@
     .ing-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
     .ing-row .ing-name { flex: 1; font-size: 13px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
     .ing-row .ing-qty { font-size: 13px; font-weight: 600; color: var(--accent); flex-shrink: 0; }
-    .ing-row .btn-icon { padding: 3px 6px; font-size: 13px; }
     .ing-search-wrap { position: relative; flex: 1; }
     .recipe-calc-box { background: var(--accent-light); border-radius: var(--radius-md); padding: 12px 14px; margin: 12px 0; }
     .recipe-calc-row { display: flex; justify-content: space-between; align-items: center; font-size: 13px; margin-bottom: 6px; }
@@ -207,6 +199,15 @@
     .btn-cancel { flex: 1; padding: 11px; font-size: 14px; font-weight: 500; border: 0.5px solid var(--border-strong); border-radius: var(--radius-md); background: none; color: var(--text); cursor: pointer; }
     .btn-save-modal { flex: 1; padding: 11px; font-size: 14px; font-weight: 600; background: var(--accent); color: #fff; border: none; border-radius: var(--radius-md); cursor: pointer; }
     .modal-sep { border: none; border-top: 0.5px solid var(--border); margin: 14px 0; }
+
+    /* SCANNER */
+    .scanner-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: #000; z-index: 200; display: none; flex-direction: column; }
+    .scanner-overlay.open { display: flex; }
+    .scanner-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; background: rgba(0,0,0,0.8); }
+    .scanner-title { color: #fff; font-size: 16px; font-weight: 600; }
+    .scanner-close { background: none; border: 1px solid rgba(255,255,255,0.4); color: #fff; font-size: 14px; font-weight: 600; cursor: pointer; padding: 6px 14px; border-radius: 20px; }
+    #scanner-container { flex: 1; position: relative; overflow: hidden; }
+    .scanner-hint { position: absolute; bottom: 0; left: 0; right: 0; text-align: center; color: rgba(255,255,255,0.85); font-size: 13px; padding: 14px; background: rgba(0,0,0,0.55); z-index: 10; }
 
     .history-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
     .history-header-title { font-size: 15px; font-weight: 600; }
@@ -251,7 +252,7 @@
 
 <header>
   <h1>Calculateur Nutritionnel</h1>
-  <p>Ciqual 2025 · Journal · Recettes · Scan · Suivi</p>
+  <p id="header-sub">Chargement de la base Ciqual...</p>
 </header>
 
 <!-- 📋 JOURNAL -->
@@ -270,12 +271,18 @@
       </div>
       <button class="btn-scan" id="btn-scan" title="Scanner un code-barres">📷</button>
     </div>
+
+    <!-- Résultat scan avec nom éditable -->
     <div class="scan-result-card" id="scan-result-card">
-      <div class="scan-result-title">✓ Produit scanné</div>
-      <div class="scan-result-name" id="scan-result-name"></div>
+      <div class="scan-result-title">✓ Produit scanné — modifiez le nom si besoin</div>
+      <div class="scan-name-row">
+        <input type="text" id="scan-name-input" placeholder="Nom du produit"/>
+        <button class="btn-scan-confirm" id="scan-name-confirm">Valider</button>
+      </div>
       <div class="scan-result-info" id="scan-result-info"></div>
       <div class="scan-result-saved" id="scan-result-saved"></div>
     </div>
+
     <div class="j-selected" id="j-selected"></div>
     <div class="j-unit-info" id="j-unit-info"></div>
     <div class="unit-toggle" id="j-unit-toggle" style="display:none">
@@ -408,19 +415,20 @@
   </div>
 </div>
 
-<!-- SCANNER OVERLAY -->
+<!-- SCANNER -->
 <div class="scanner-overlay" id="scanner-overlay">
   <div class="scanner-header">
     <div class="scanner-title">📷 Scanner un code-barres</div>
     <button class="scanner-close" id="scanner-close">✕ Fermer</button>
   </div>
   <div id="scanner-container">
-    <div class="scanner-loading" id="scanner-loading">⏳ Démarrage de la caméra...</div>
+    <div id="scanner-loading" style="color:#fff;text-align:center;padding:40px 20px;font-size:14px">⏳ Démarrage de la caméra...</div>
+    <div id="qr-reader"></div>
   </div>
   <div class="scanner-hint">Centrez le code-barres dans le cadre</div>
 </div>
 
-<!-- MODAL MODIFIER -->
+<!-- MODAL MODIFIER JOURNAL -->
 <div class="modal-overlay" id="modal-edit">
   <div class="modal">
     <h3 id="me-name"></h3>
@@ -513,72 +521,26 @@
   <button class="nav-btn" data-tab="history"><span class="icon">📊</span>Historique</button>
 </nav>
 
-<footer>Données Ciqual 2025 — Anses · Open Food Facts · Stockage local</footer>
+<footer>Données Ciqual 2013 — Anses · Open Food Facts · Stockage local</footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
 <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
 <script>
-const CIQUAL=[
-  {n:"Poulet, blanc, cuit",kcal:165,g:0,p:31,l:3.6},{n:"Poulet, cuisse, cuite",kcal:209,g:0,p:26,l:11},
-  {n:"Poulet, entier, rôti",kcal:215,g:0,p:27,l:12},{n:"Bœuf, steak haché 5% MG",kcal:121,g:0,p:21,l:5},
-  {n:"Bœuf, steak haché 15% MG",kcal:185,g:0,p:19,l:13},{n:"Bœuf, entrecôte, grillée",kcal:233,g:0,p:27,l:14},
-  {n:"Porc, côtelette, grillée",kcal:185,g:0,p:27,l:9},{n:"Jambon cuit",kcal:107,g:1,p:17,l:4},
-  {n:"Bacon, grillé",kcal:541,g:0,p:37,l:45},{n:"Saumon, cuit",kcal:208,g:0,p:25,l:13},
-  {n:"Thon, en boîte (au naturel)",kcal:103,g:0,p:24,l:1},{n:"Cabillaud, cuit",kcal:89,g:0,p:20,l:1},
-  {n:"Crevettes, cuites",kcal:99,g:0,p:21,l:1},{n:"Sardine, en boîte à l'huile",kcal:208,g:0,p:25,l:11},
-  {n:"Œuf entier, cuit",kcal:147,g:1,p:13,l:10},{n:"Blanc d'œuf, cuit",kcal:52,g:0,p:11,l:0.2},
-  {n:"Lait entier",kcal:64,g:5,p:3,l:4},{n:"Lait demi-écrémé",kcal:46,g:5,p:3,l:2},
-  {n:"Lait écrémé",kcal:34,g:5,p:3,l:0.2},{n:"Yaourt nature",kcal:59,g:6,p:4,l:3},
-  {n:"Yaourt grec",kcal:97,g:4,p:9,l:5},{n:"Fromage blanc 0%",kcal:46,g:4,p:8,l:0.2},
-  {n:"Fromage blanc 3%",kcal:70,g:4,p:8,l:3},{n:"Beurre",kcal:740,g:0,p:1,l:82},
-  {n:"Camembert",kcal:264,g:0,p:20,l:21},{n:"Gruyère",kcal:391,g:0,p:29,l:31},
-  {n:"Emmental",kcal:382,g:0,p:29,l:30},{n:"Mozzarella",kcal:254,g:2,p:18,l:20},
-  {n:"Parmesan",kcal:392,g:4,p:36,l:26},{n:"Chèvre frais",kcal:230,g:1,p:14,l:19},
-  {n:"Crème fraîche entière",kcal:292,g:3,p:2,l:30},{n:"Riz blanc, cuit",kcal:130,g:29,p:2,l:0.3},
-  {n:"Riz complet, cuit",kcal:111,g:23,p:3,l:1},{n:"Pâtes, cuites",kcal:131,g:26,p:5,l:1},
-  {n:"Pâtes complètes, cuites",kcal:124,g:24,p:5,l:1},{n:"Pain blanc",kcal:266,g:53,p:9,l:2},
-  {n:"Pain complet",kcal:241,g:44,p:9,l:3},{n:"Pain de seigle",kcal:259,g:49,p:9,l:3},
-  {n:"Baguette",kcal:275,g:58,p:9,l:1},{n:"Farine de blé T55",kcal:360,g:74,p:11,l:1},
-  {n:"Flocons d'avoine",kcal:367,g:58,p:13,l:7},{n:"Muesli",kcal:363,g:61,p:10,l:7},
-  {n:"Corn flakes",kcal:372,g:85,p:7,l:1},{n:"Quinoa, cuit",kcal:120,g:22,p:4,l:2},
-  {n:"Lentilles, cuites",kcal:116,g:20,p:9,l:0.4},{n:"Pois chiches, cuits",kcal:164,g:27,p:9,l:3},
-  {n:"Haricots rouges, cuits",kcal:127,g:23,p:9,l:0.5},{n:"Haricots blancs, cuits",kcal:123,g:22,p:9,l:0.5},
-  {n:"Edamame (soja vert)",kcal:122,g:10,p:11,l:5},{n:"Tofu nature",kcal:76,g:2,p:8,l:4},
-  {n:"Pomme de terre, bouillie",kcal:73,g:17,p:2,l:0.1},{n:"Pomme de terre, au four",kcal:93,g:21,p:2,l:0.1},
-  {n:"Frites",kcal:312,g:41,p:4,l:15},{n:"Patate douce, cuite",kcal:86,g:20,p:2,l:0.1},
-  {n:"Carotte, crue",kcal:41,g:10,p:1,l:0.2},{n:"Tomate, crue",kcal:18,g:4,p:1,l:0.2},
-  {n:"Salade verte (laitue)",kcal:13,g:2,p:1,l:0.2},{n:"Épinards, cuits",kcal:23,g:3,p:3,l:0.4},
-  {n:"Brocoli, cuit",kcal:35,g:7,p:2,l:0.4},{n:"Courgette, cuite",kcal:16,g:3,p:1,l:0.2},
-  {n:"Champignon, cru",kcal:22,g:3,p:3,l:0.3},{n:"Avocat",kcal:167,g:2,p:2,l:17},
-  {n:"Oignon, cru",kcal:40,g:9,p:1,l:0.1},{n:"Ail, cru",kcal:149,g:33,p:6,l:0.5},
-  {n:"Poivron rouge, cru",kcal:31,g:6,p:1,l:0.3},{n:"Concombre, cru",kcal:12,g:2,p:1,l:0.1},
-  {n:"Céleri, cru",kcal:16,g:3,p:1,l:0.2},{n:"Petits pois, cuits",kcal:84,g:14,p:6,l:0.4},
-  {n:"Maïs doux, en boîte",kcal:86,g:19,p:3,l:1},{n:"Pomme",kcal:52,g:14,p:0.3,l:0.2},
-  {n:"Banane",kcal:89,g:23,p:1,l:0.3},{n:"Orange",kcal:47,g:12,p:1,l:0.1},
-  {n:"Raisin",kcal:69,g:18,p:1,l:0.2},{n:"Fraise",kcal:32,g:8,p:0.7,l:0.3},
-  {n:"Myrtille",kcal:57,g:14,p:0.7,l:0.3},{n:"Mangue",kcal:65,g:17,p:0.5,l:0.3},
-  {n:"Ananas",kcal:50,g:13,p:0.5,l:0.1},{n:"Poire",kcal:57,g:15,p:0.4,l:0.1},
-  {n:"Pêche",kcal:39,g:10,p:0.9,l:0.3},{n:"Kiwi",kcal:61,g:15,p:1,l:0.5},
-  {n:"Melon",kcal:34,g:8,p:0.8,l:0.2},{n:"Pastèque",kcal:30,g:8,p:0.6,l:0.2},
-  {n:"Citron",kcal:29,g:9,p:1,l:0.3},{n:"Amandes",kcal:579,g:22,p:21,l:50},
-  {n:"Noix",kcal:654,g:14,p:15,l:65},{n:"Noisettes",kcal:628,g:17,p:15,l:61},
-  {n:"Cacahuètes",kcal:567,g:16,p:26,l:49},{n:"Noix de cajou",kcal:553,g:30,p:18,l:44},
-  {n:"Pistaches",kcal:562,g:28,p:20,l:45},{n:"Graines de tournesol",kcal:584,g:20,p:21,l:51},
-  {n:"Graines de chia",kcal:486,g:42,p:17,l:31},{n:"Beurre de cacahuète",kcal:588,g:20,p:25,l:50},
-  {n:"Huile d'olive",kcal:900,g:0,p:0,l:100},{n:"Huile de tournesol",kcal:900,g:0,p:0,l:100},
-  {n:"Huile de coco",kcal:900,g:0,p:0,l:100},{n:"Sucre blanc",kcal:400,g:100,p:0,l:0},
-  {n:"Miel",kcal:304,g:82,p:0.3,l:0},{n:"Chocolat noir 70%",kcal:546,g:46,p:8,l:40},
-  {n:"Chocolat au lait",kcal:535,g:58,p:8,l:32},{n:"Nutella",kcal:530,g:57,p:6,l:31},
-  {n:"Confiture",kcal:278,g:68,p:0.4,l:0},{n:"Mayonnaise",kcal:680,g:2,p:1,l:74},
-  {n:"Ketchup",kcal:101,g:26,p:1,l:0.1},{n:"Moutarde",kcal:66,g:6,p:4,l:4},
-  {n:"Sauce soja",kcal:53,g:5,p:8,l:0.1},{n:"Vinaigre balsamique",kcal:88,g:17,p:0.5,l:0},
-  {n:"Crème glacée vanille",kcal:207,g:23,p:4,l:11},{n:"Chips nature",kcal:536,g:53,p:7,l:35},
-  {n:"Biscuits sablés",kcal:488,g:62,p:6,l:25},{n:"Croissant",kcal:406,g:45,p:8,l:21},
-  {n:"Jus d'orange",kcal:45,g:10,p:0.7,l:0.2},{n:"Coca-Cola",kcal:42,g:11,p:0,l:0},
-  {n:"Bière (5%)",kcal:43,g:3,p:0.5,l:0},{n:"Vin rouge",kcal:85,g:2,p:0.1,l:0},
-  {n:"Café, expresso",kcal:2,g:0,p:0.1,l:0},{n:"Lait de soja",kcal:33,g:2,p:3,l:2},
-  {n:"Lait d'amande",kcal:24,g:3,p:1,l:1},{n:"Protéines de whey (poudre)",kcal:370,g:5,p:80,l:5},
-];
+/* ══ BASE DE DONNÉES ══ */
+let CIQUAL = []; // Chargée depuis ciqual.json
+
+async function loadCiqual() {
+  try {
+    const res = await fetch('ciqual.json');
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    CIQUAL = await res.json();
+    document.getElementById('header-sub').textContent = `Ciqual 2013 — ${CIQUAL.length} aliments · Open Food Facts`;
+    document.getElementById('header-sub').className = '';
+  } catch(e) {
+    document.getElementById('header-sub').textContent = 'Base Ciqual non chargée — vérifiez que ciqual.json est sur GitHub';
+    console.warn('Ciqual non chargé:', e);
+  }
+}
 
 /* ══ STORAGE ══ */
 const K={CUSTOM:'custom_v1',JOURNAL:'journal_v1',SETTINGS:'settings_v1',RECIPES:'recipes_v1'};
@@ -601,7 +563,7 @@ function getDB(){
   const custom=loadArr(K.CUSTOM).map(c=>({...c,custom:true}));
   const recipes=loadArr(K.RECIPES).map(r=>{
     const m=recipeNutrients(r);
-    return{n:r.name,kcal:m.kcal,g:m.g,p:m.p,l:m.l,isRecipe:true,unitName:r.unitName,unitWeight:r.unitWeight,recipeId:r.id};
+    return{n:r.name,kcal:m.kcal,g:m.g,p:m.p,l:m.l,isRecipe:true,unitName:r.unitName,unitWeight:r.unitWeight};
   });
   return[...CIQUAL,...custom,...recipes];
 }
@@ -638,7 +600,7 @@ function makeSugs(inputEl,boxEl,onSelect,includeRecipes=true){
     const q=inputEl.value.trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
     if(q.length<2){boxEl.style.display='none';return;}
     const db=includeRecipes?getDB():[...CIQUAL,...loadArr(K.CUSTOM).map(c=>({...c,custom:true}))];
-    const res=db.filter(x=>x.n.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').includes(q)).slice(0,8);
+    const res=db.filter(x=>x.n.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').includes(q)).slice(0,10);
     boxEl.innerHTML='';
     if(!res.length){boxEl.innerHTML='<div class="no-result">Aucun résultat.</div>';}
     else res.forEach(item=>{
@@ -663,7 +625,6 @@ function selectJournalItem(item){
   jCurrent=item;jModeGrams=true;
   document.getElementById('j-selected').textContent='✓ '+item.n;
   document.getElementById('j-selected').style.display='block';
-  document.getElementById('scan-result-card').style.display='none';
   const hasUnit=item.unitWeight&&item.unitName;
   const tog=document.getElementById('j-unit-toggle');
   const info=document.getElementById('j-unit-info');
@@ -726,18 +687,24 @@ document.getElementById('j-btn-add').addEventListener('click',()=>{
   if(!j[jDate])j[jDate]={};
   if(!j[jDate][meal])j[jDate][meal]=[];
   j[jDate][meal].push(entry);save(K.JOURNAL,j);
-  jCurrent=null;
-  document.getElementById('j-search').value='';
-  document.getElementById('j-selected').style.display='none';
-  document.getElementById('scan-result-card').style.display='none';
-  document.getElementById('j-unit-info').style.display='none';
-  document.getElementById('j-unit-toggle').style.display='none';
-  document.getElementById('j-mass').value=100;document.getElementById('j-slider').value=100;
-  document.getElementById('j-mass-unit').textContent='g';jModeGrams=true;
+  resetJournalAdd();
   document.getElementById('j-flash').textContent='✓ Ajouté !';
   setTimeout(()=>document.getElementById('j-flash').textContent='',1500);
   renderJournalMeals();
 });
+
+function resetJournalAdd(){
+  jCurrent=null;
+  document.getElementById('j-search').value='';
+  document.getElementById('j-selected').style.display='none';
+  document.getElementById('scan-result-card').style.display='none';
+  document.getElementById('scan-result-saved').style.display='none';
+  document.getElementById('j-unit-info').style.display='none';
+  document.getElementById('j-unit-toggle').style.display='none';
+  document.getElementById('j-mass').value=100;document.getElementById('j-slider').value=100;
+  document.getElementById('j-mass-unit').textContent='g';jModeGrams=true;
+  document.getElementById('j-slider').min=1;document.getElementById('j-slider').max=500;document.getElementById('j-slider').step=1;
+}
 
 document.getElementById('j-prev').addEventListener('click',()=>{jDate=shiftDay(jDate,-1);renderJournal();});
 document.getElementById('j-next').addEventListener('click',()=>{if(jDate<todayKey()){jDate=shiftDay(jDate,1);renderJournal();}});
@@ -807,66 +774,50 @@ function renderJournalMeals(){
   });
 }
 
-/* ══ SCANNER avec html5-qrcode ══ */
-let html5Scanner=null;
-let scannerRunning=false;
+/* ══ SCANNER ══ */
+let html5Scanner=null,scannerRunning=false;
+let pendingScanItem=null; // item en attente de confirmation du nom
 
 document.getElementById('btn-scan').addEventListener('click',openScanner);
 document.getElementById('scanner-close').addEventListener('click',closeScanner);
 
 function openScanner(){
   document.getElementById('scanner-overlay').classList.add('open');
-  document.getElementById('scanner-loading').style.display='block';
-  // Vider le container et recréer le div pour le scanner
   const container=document.getElementById('scanner-container');
   container.innerHTML='<div id="scanner-loading" style="color:#fff;text-align:center;padding:40px 20px;font-size:14px">⏳ Démarrage de la caméra...</div><div id="qr-reader"></div>';
-
-  if(typeof Html5Qrcode==='undefined'){
-    setTimeout(startHtml5Scanner,1000);
-  }else{
-    startHtml5Scanner();
-  }
+  if(typeof Html5Qrcode==='undefined'){setTimeout(startScanner,1000);}
+  else{startScanner();}
 }
-
-function startHtml5Scanner(){
+function startScanner(){
   try{
     html5Scanner=new Html5Qrcode('qr-reader');
-    const config={
-      fps:10,
-      qrbox:{width:250,height:150},
-      aspectRatio:1.5,
-      supportedScanTypes:[Html5QrcodeScanType.SCAN_TYPE_CAMERA]
-    };
     html5Scanner.start(
       {facingMode:'environment'},
-      config,
-      async(decodedText)=>{
+      {fps:10,qrbox:{width:250,height:150},aspectRatio:1.5},
+      async(barcode)=>{
         if(scannerRunning)return;
         scannerRunning=true;
         await closeScanner();
-        await fetchBarcode(decodedText);
+        await fetchBarcode(barcode);
         scannerRunning=false;
       },
-      ()=>{} // erreur de scan ignorée (scan en continu)
+      ()=>{}
     ).then(()=>{
-      const loadingEl=document.getElementById('scanner-loading');
-      if(loadingEl)loadingEl.style.display='none';
+      const el=document.getElementById('scanner-loading');
+      if(el)el.style.display='none';
     }).catch(err=>{
-      const loadingEl=document.getElementById('scanner-loading');
-      if(loadingEl)loadingEl.textContent='❌ Erreur : '+err+'. Vérifiez que Chrome a accès à la caméra.';
+      const el=document.getElementById('scanner-loading');
+      if(el)el.textContent='❌ '+err+'. Vérifiez que Chrome a accès à la caméra.';
     });
   }catch(err){
-    const loadingEl=document.getElementById('scanner-loading');
-    if(loadingEl)loadingEl.textContent='❌ Erreur : '+err;
+    const el=document.getElementById('scanner-loading');
+    if(el)el.textContent='❌ '+err;
   }
 }
-
 async function closeScanner(){
   document.getElementById('scanner-overlay').classList.remove('open');
   if(html5Scanner){
-    try{
-      if(html5Scanner.isScanning)await html5Scanner.stop();
-    }catch(e){}
+    try{if(html5Scanner.isScanning)await html5Scanner.stop();}catch(e){}
     try{html5Scanner.clear();}catch(e){}
     html5Scanner=null;
   }
@@ -879,46 +830,67 @@ async function fetchBarcode(barcode){
     const data=await res.json();
     if(data.status===0||!data.product){
       document.getElementById('j-flash').textContent='';
-      alert(`Produit non trouvé (code : ${barcode}).\nVous pouvez l'ajouter manuellement dans l'onglet ➕`);
+      alert(`Produit non trouvé (code : ${barcode}).\nAjoutez-le manuellement dans l'onglet ➕`);
       return;
     }
     const p=data.product;
     const n=p.nutriments;
-    const name=p.product_name_fr||p.product_name||p.generic_name||'Produit scanné';
+    const rawName=p.product_name_fr||p.product_name||p.generic_name||'Produit scanné';
     const kcal=parseFloat(n['energy-kcal_100g'])||parseFloat((n['energy_100g']||0)/4.184)||0;
     const gluc=parseFloat(n['carbohydrates_100g'])||0;
     const prot=parseFloat(n['proteins_100g'])||0;
     const lipi=parseFloat(n['fat_100g'])||0;
 
     if(!kcal&&!gluc&&!prot&&!lipi){
-      alert(`Données nutritionnelles incomplètes pour "${name}".\nVous pouvez l'ajouter manuellement dans l'onglet ➕`);
+      alert(`Données nutritionnelles incomplètes pour "${rawName}".\nAjoutez-le manuellement dans l'onglet ➕`);
       document.getElementById('j-flash').textContent='';
       return;
     }
 
-    const customs=loadArr(K.CUSTOM);
-    const exists=customs.find(x=>x.n.toLowerCase()===name.toLowerCase());
-    let savedMsg='';
-    if(!exists){
-      customs.push({n:name,kcal:+kcal.toFixed(1),g:+gluc.toFixed(1),p:+prot.toFixed(1),l:+lipi.toFixed(1)});
-      saveArr(K.CUSTOM,customs);
-      savedMsg='✓ Sauvegardé dans vos aliments personnalisés';
-    }else{
-      savedMsg='Déjà dans vos aliments personnalisés';
-    }
+    // Stocker les données en attente
+    pendingScanItem={rawName,kcal:+kcal.toFixed(1),g:+gluc.toFixed(1),p:+prot.toFixed(1),l:+lipi.toFixed(1)};
 
-    const item={n:name,kcal:+kcal.toFixed(1),g:+gluc.toFixed(1),p:+prot.toFixed(1),l:+lipi.toFixed(1)};
-    document.getElementById('scan-result-name').textContent=name;
+    // Afficher carte avec nom éditable
+    document.getElementById('scan-name-input').value=rawName;
     document.getElementById('scan-result-info').textContent=`${Math.round(kcal)} kcal · G${fmt(gluc)} · P${fmt(prot)} · L${fmt(lipi)} (pour 100g)`;
-    document.getElementById('scan-result-saved').textContent=savedMsg;
+    document.getElementById('scan-result-saved').style.display='none';
     document.getElementById('scan-result-card').style.display='block';
     document.getElementById('j-flash').textContent='';
-    selectJournalItem(item);
+
+    // Focus sur le champ nom
+    setTimeout(()=>document.getElementById('scan-name-input').focus(),100);
 
   }catch(err){
     document.getElementById('j-flash').textContent='';
-    alert('Erreur de connexion à Open Food Facts. Vérifiez votre connexion internet.');
+    alert('Erreur de connexion à Open Food Facts.');
   }
+}
+
+// Validation du nom scanné
+document.getElementById('scan-name-confirm').addEventListener('click',confirmScanName);
+document.getElementById('scan-name-input').addEventListener('keydown',e=>{if(e.key==='Enter')confirmScanName();});
+
+function confirmScanName(){
+  if(!pendingScanItem)return;
+  const finalName=document.getElementById('scan-name-input').value.trim();
+  if(!finalName){alert('Veuillez renseigner un nom.');return;}
+
+  const item={n:finalName,kcal:pendingScanItem.kcal,g:pendingScanItem.g,p:pendingScanItem.p,l:pendingScanItem.l};
+
+  // Sauvegarder dans les perso
+  const customs=loadArr(K.CUSTOM);
+  const exists=customs.find(x=>x.n.toLowerCase()===finalName.toLowerCase());
+  if(!exists){
+    customs.push(item);
+    saveArr(K.CUSTOM,customs);
+    document.getElementById('scan-result-saved').textContent='✓ Sauvegardé dans vos aliments personnalisés';
+  }else{
+    document.getElementById('scan-result-saved').textContent='Déjà dans vos aliments personnalisés';
+  }
+  document.getElementById('scan-result-saved').style.display='block';
+
+  pendingScanItem=null;
+  selectJournalItem(item);
 }
 
 /* ══ MODAL MODIFIER ══ */
@@ -1087,8 +1059,7 @@ function openRecipeModal(recipe){
   document.getElementById('mr-ing-search').value='';document.getElementById('mr-ing-qty').value='';
   document.getElementById('mr-err').style.display='none';
   mrIngredients=recipe?[...recipe.ingredients]:[];mrIngCurrent=null;
-  renderModalIngredients();
-  document.getElementById('modal-recipe').classList.add('open');
+  renderModalIngredients();document.getElementById('modal-recipe').classList.add('open');
 }
 document.getElementById('mr-cancel').addEventListener('click',()=>document.getElementById('modal-recipe').classList.remove('open'));
 document.getElementById('modal-recipe').addEventListener('click',e=>{if(e.target===document.getElementById('modal-recipe'))document.getElementById('modal-recipe').classList.remove('open');});
@@ -1221,8 +1192,10 @@ document.getElementById('btn-reset').addEventListener('click',()=>{
 });
 
 /* ══ INIT ══ */
-renderMyFoods();
-renderJournal();
+loadCiqual().then(()=>{
+  renderMyFoods();
+  renderJournal();
+});
 </script>
 </body>
 </html>
