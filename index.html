@@ -110,7 +110,6 @@
     .date-nav-btn:disabled { opacity: 0.3; cursor: default; }
     .date-label { font-size: 15px; font-weight: 600; text-align: center; flex: 1; padding: 0 8px; }
 
-    /* JOURNAL ADD */
     .journal-add { background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--radius-lg); padding: 14px; margin-bottom: 14px; }
     .journal-add-title { font-size: 13px; font-weight: 600; color: var(--text-muted); margin-bottom: 10px; }
     .search-scan-row { display: flex; gap: 8px; margin-bottom: 10px; }
@@ -126,26 +125,24 @@
     .j-add-row { display: flex; gap: 8px; }
     .j-add-row select { flex: 1; font-size: 13px; padding: 9px 11px; }
 
-    /* SCANNER MODAL */
+    /* SCANNER */
     .scanner-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: #000; z-index: 200; display: none; flex-direction: column; }
     .scanner-overlay.open { display: flex; }
-    .scanner-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; background: rgba(0,0,0,0.7); position: relative; z-index: 10; }
+    .scanner-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; background: rgba(0,0,0,0.8); }
     .scanner-title { color: #fff; font-size: 16px; font-weight: 600; }
-    .scanner-close { background: none; border: none; color: #fff; font-size: 24px; cursor: pointer; padding: 4px; }
-    .scanner-video-wrap { position: relative; flex: 1; overflow: hidden; }
-    #scanner-video { width: 100%; height: 100%; object-fit: cover; }
-    .scanner-frame { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -55%); width: 260px; height: 160px; border: 2px solid rgba(255,255,255,0.8); border-radius: 12px; box-shadow: 0 0 0 9999px rgba(0,0,0,0.55); }
-    .scanner-line { position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--accent); animation: scan 2s linear infinite; }
-    @keyframes scan { 0%{top:0} 50%{top:100%} 100%{top:0} }
-    .scanner-hint { position: absolute; bottom: 0; left: 0; right: 0; text-align: center; color: rgba(255,255,255,0.8); font-size: 13px; padding: 16px; background: rgba(0,0,0,0.5); }
-    .scanner-status { position: absolute; top: 10px; left: 0; right: 0; text-align: center; }
-    .scanner-status span { background: rgba(0,0,0,0.7); color: #fff; font-size: 12px; padding: 6px 14px; border-radius: 20px; }
+    .scanner-close { background: none; border: 1px solid rgba(255,255,255,0.4); color: #fff; font-size: 14px; font-weight: 600; cursor: pointer; padding: 6px 14px; border-radius: 20px; }
+    #scanner-container { flex: 1; position: relative; overflow: hidden; }
+    #scanner-container video { width: 100% !important; height: 100% !important; object-fit: cover !important; }
+    /* Masquer les éléments visuels par défaut de html5-qrcode */
+    #qr-shaded-region { border-color: rgba(83,74,183,0.8) !important; }
+    .scanner-hint { position: absolute; bottom: 0; left: 0; right: 0; text-align: center; color: rgba(255,255,255,0.85); font-size: 13px; padding: 14px; background: rgba(0,0,0,0.55); z-index: 10; }
+    .scanner-loading { color: #fff; text-align: center; padding: 40px 20px; font-size: 14px; }
 
     /* SCAN RESULT */
     .scan-result-card { background: var(--green-bg); border: 0.5px solid var(--green); border-radius: var(--radius-lg); padding: 14px; margin-bottom: 12px; display: none; }
     .scan-result-title { font-size: 13px; font-weight: 600; color: var(--green); margin-bottom: 4px; }
     .scan-result-name { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 2px; }
-    .scan-result-info { font-size: 12px; color: var(--text-muted); margin-bottom: 8px; }
+    .scan-result-info { font-size: 12px; color: var(--text-muted); margin-bottom: 6px; }
     .scan-result-saved { font-size: 11px; color: var(--green); font-style: italic; }
 
     .total-card { background: var(--accent-light); border-radius: var(--radius-lg); padding: 14px; margin-bottom: 14px; }
@@ -168,7 +165,6 @@
     .ji-info { font-size: 11px; color: var(--text-muted); margin-top: 3px; }
     .journal-empty { text-align: center; color: var(--text-hint); font-size: 13px; padding: 24px 0; }
 
-    /* RECETTES */
     .recipe-card { background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--radius-lg); padding: 14px; margin-bottom: 12px; }
     .recipe-card-header { display: flex; align-items: flex-start; justify-content: space-between; }
     .recipe-card-name { font-size: 14px; font-weight: 600; }
@@ -187,14 +183,12 @@
     .recipe-calc-value { font-weight: 600; color: var(--accent); }
     .recipe-calc-value.auto { color: var(--green); }
 
-    /* DÉPENSE */
     .depense-big { text-align: center; padding: 24px 0 16px; }
     .depense-big-label { font-size: 13px; color: var(--text-muted); margin-bottom: 10px; }
     .depense-input-row { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 10px; }
     .depense-input-row input[type=number] { width: 130px; text-align: center; font-size: 28px; font-weight: 700; padding: 12px; border-radius: var(--radius-lg); }
     .depense-default { font-size: 12px; color: var(--text-hint); }
 
-    /* MODAL EDIT */
     .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 100; display: none; align-items: flex-start; justify-content: center; padding: 16px; overflow-y: auto; }
     .modal-overlay.open { display: flex; }
     .modal { background: var(--surface); border-radius: var(--radius-lg); padding: 20px; width: 100%; max-width: 440px; margin: auto; }
@@ -214,7 +208,6 @@
     .btn-save-modal { flex: 1; padding: 11px; font-size: 14px; font-weight: 600; background: var(--accent); color: #fff; border: none; border-radius: var(--radius-md); cursor: pointer; }
     .modal-sep { border: none; border-top: 0.5px solid var(--border); margin: 14px 0; }
 
-    /* HISTORIQUE */
     .history-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
     .history-header-title { font-size: 15px; font-weight: 600; }
     .btn-settings-toggle { background: none; border: 0.5px solid var(--border-strong); border-radius: var(--radius-md); padding: 7px 12px; font-size: 13px; cursor: pointer; color: var(--text-muted); }
@@ -270,8 +263,6 @@
   </div>
   <div class="journal-add">
     <div class="journal-add-title">➕ Ajouter un aliment</div>
-
-    <!-- Barre recherche + bouton scan -->
     <div class="search-scan-row">
       <div class="search-wrap">
         <input type="search" id="j-search" placeholder="Rechercher..." autocomplete="off" autocorrect="off"/>
@@ -279,15 +270,12 @@
       </div>
       <button class="btn-scan" id="btn-scan" title="Scanner un code-barres">📷</button>
     </div>
-
-    <!-- Résultat scan -->
     <div class="scan-result-card" id="scan-result-card">
       <div class="scan-result-title">✓ Produit scanné</div>
       <div class="scan-result-name" id="scan-result-name"></div>
       <div class="scan-result-info" id="scan-result-info"></div>
       <div class="scan-result-saved" id="scan-result-saved"></div>
     </div>
-
     <div class="j-selected" id="j-selected"></div>
     <div class="j-unit-info" id="j-unit-info"></div>
     <div class="unit-toggle" id="j-unit-toggle" style="display:none">
@@ -420,23 +408,19 @@
   </div>
 </div>
 
-<!-- SCANNER -->
+<!-- SCANNER OVERLAY -->
 <div class="scanner-overlay" id="scanner-overlay">
   <div class="scanner-header">
     <div class="scanner-title">📷 Scanner un code-barres</div>
-    <button class="scanner-close" id="scanner-close">✕</button>
+    <button class="scanner-close" id="scanner-close">✕ Fermer</button>
   </div>
-  <div class="scanner-video-wrap">
-    <video id="scanner-video" playsinline muted></video>
-    <div class="scanner-frame">
-      <div class="scanner-line"></div>
-    </div>
-    <div class="scanner-status"><span id="scanner-status-txt">Pointez vers un code-barres</span></div>
-    <div class="scanner-hint">Centrez le code-barres dans le cadre</div>
+  <div id="scanner-container">
+    <div class="scanner-loading" id="scanner-loading">⏳ Démarrage de la caméra...</div>
   </div>
+  <div class="scanner-hint">Centrez le code-barres dans le cadre</div>
 </div>
 
-<!-- MODAL MODIFIER JOURNAL -->
+<!-- MODAL MODIFIER -->
 <div class="modal-overlay" id="modal-edit">
   <div class="modal">
     <h3 id="me-name"></h3>
@@ -495,7 +479,7 @@
         <button class="btn-accent" id="mr-ing-add" style="padding:9px 14px;font-size:13px">+</button>
       </div>
     </div>
-    <div class="recipe-calc-box" id="mr-calc-box">
+    <div class="recipe-calc-box">
       <div class="recipe-calc-row">
         <span class="recipe-calc-label">Poids total des ingrédients</span>
         <span class="recipe-calc-value" id="mr-total-weight">0 g</span>
@@ -532,7 +516,7 @@
 <footer>Données Ciqual 2025 — Anses · Open Food Facts · Stockage local</footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
-<script src="https://unpkg.com/@zxing/library@0.19.1/umd/index.min.js"></script>
+<script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
 <script>
 const CIQUAL=[
   {n:"Poulet, blanc, cuit",kcal:165,g:0,p:31,l:3.6},{n:"Poulet, cuisse, cuite",kcal:209,g:0,p:26,l:11},
@@ -613,7 +597,6 @@ function recipeNutrients(recipe){
   if(!tw)return{kcal:0,g:0,p:0,l:0,totalWeight:0};
   return{kcal:+(tk/tw*100).toFixed(1),g:+(tg/tw*100).toFixed(1),p:+(tp/tw*100).toFixed(1),l:+(tl/tw*100).toFixed(1),totalWeight:tw};
 }
-
 function getDB(){
   const custom=loadArr(K.CUSTOM).map(c=>({...c,custom:true}));
   const recipes=loadArr(K.RECIPES).map(r=>{
@@ -622,7 +605,6 @@ function getDB(){
   });
   return[...CIQUAL,...custom,...recipes];
 }
-
 const getSettings=()=>({bmr:0,activity:1.55,...load(K.SETTINGS)});
 const defaultDep=()=>{const s=getSettings();return s.bmr>0?Math.round(s.bmr*s.activity):0;};
 const getDayDep=k=>{const j=load(K.JOURNAL);return(j[k]&&j[k]._dep!=null)?j[k]._dep:defaultDep();};
@@ -699,7 +681,6 @@ function selectJournalItem(item){
 }
 
 makeSugs(document.getElementById('j-search'),document.getElementById('j-sugs'),selectJournalItem);
-
 document.getElementById('j-mode-g').addEventListener('click',()=>{
   if(!jCurrent)return;jModeGrams=true;
   document.getElementById('j-mode-g').classList.add('active');document.getElementById('j-mode-u').classList.remove('active');
@@ -767,13 +748,11 @@ function renderJournal(){
   document.getElementById('j-next').disabled=isToday;
   renderJournalMeals();
 }
-
 function dayTotals(dayData){
   let kcal=0,g=0,p=0,l=0;
   MEALS.forEach(m=>(dayData[m]||[]).forEach(e=>{kcal+=e.kcal;g+=e.g;p+=e.p;l+=e.l;}));
   return{kcal,g,p,l};
 }
-
 function renderJournalMeals(){
   const j=load(K.JOURNAL);const dayData=j[jDate]||{};
   const hasEntries=MEALS.some(m=>(dayData[m]||[]).length>0);
@@ -828,56 +807,72 @@ function renderJournalMeals(){
   });
 }
 
-/* ══ SCANNER ══ */
-let codeReader=null,scanStream=null;
+/* ══ SCANNER avec html5-qrcode ══ */
+let html5Scanner=null;
+let scannerRunning=false;
 
 document.getElementById('btn-scan').addEventListener('click',openScanner);
 document.getElementById('scanner-close').addEventListener('click',closeScanner);
 
 function openScanner(){
   document.getElementById('scanner-overlay').classList.add('open');
-  document.getElementById('scanner-status-txt').textContent='Démarrage de la caméra...';
-  startScanner();
+  document.getElementById('scanner-loading').style.display='block';
+  // Vider le container et recréer le div pour le scanner
+  const container=document.getElementById('scanner-container');
+  container.innerHTML='<div id="scanner-loading" style="color:#fff;text-align:center;padding:40px 20px;font-size:14px">⏳ Démarrage de la caméra...</div><div id="qr-reader"></div>';
+
+  if(typeof Html5Qrcode==='undefined'){
+    setTimeout(startHtml5Scanner,1000);
+  }else{
+    startHtml5Scanner();
+  }
 }
 
-function closeScanner(){
-  document.getElementById('scanner-overlay').classList.remove('open');
-  stopScanner();
-}
-
-function stopScanner(){
-  if(codeReader){try{codeReader.reset();}catch(e){}}
-  if(scanStream){scanStream.getTracks().forEach(t=>t.stop());scanStream=null;}
-  codeReader=null;
-}
-
-async function startScanner(){
+function startHtml5Scanner(){
   try{
-    if(typeof ZXing==='undefined'){
-      document.getElementById('scanner-status-txt').textContent='Chargement du scanner...';
-      await new Promise(r=>setTimeout(r,1500));
-    }
-    codeReader=new ZXing.BrowserMultiFormatReader();
-    const devices=await ZXing.BrowserCodeReader.listVideoInputDevices();
-    // Préférer la caméra arrière
-    const device=devices.find(d=>d.label.toLowerCase().includes('back')||d.label.toLowerCase().includes('rear')||d.label.toLowerCase().includes('environment'))||devices[devices.length-1]||devices[0];
-    if(!device){document.getElementById('scanner-status-txt').textContent='Aucune caméra détectée';return;}
-    document.getElementById('scanner-status-txt').textContent='Pointez vers un code-barres';
-    codeReader.decodeFromVideoDevice(device.deviceId,'scanner-video',async(result,err)=>{
-      if(result){
-        const barcode=result.getText();
-        document.getElementById('scanner-status-txt').textContent='Code détecté : '+barcode;
-        closeScanner();
-        await fetchBarcode(barcode);
-      }
+    html5Scanner=new Html5Qrcode('qr-reader');
+    const config={
+      fps:10,
+      qrbox:{width:250,height:150},
+      aspectRatio:1.5,
+      supportedScanTypes:[Html5QrcodeScanType.SCAN_TYPE_CAMERA]
+    };
+    html5Scanner.start(
+      {facingMode:'environment'},
+      config,
+      async(decodedText)=>{
+        if(scannerRunning)return;
+        scannerRunning=true;
+        await closeScanner();
+        await fetchBarcode(decodedText);
+        scannerRunning=false;
+      },
+      ()=>{} // erreur de scan ignorée (scan en continu)
+    ).then(()=>{
+      const loadingEl=document.getElementById('scanner-loading');
+      if(loadingEl)loadingEl.style.display='none';
+    }).catch(err=>{
+      const loadingEl=document.getElementById('scanner-loading');
+      if(loadingEl)loadingEl.textContent='❌ Erreur : '+err+'. Vérifiez que Chrome a accès à la caméra.';
     });
   }catch(err){
-    document.getElementById('scanner-status-txt').textContent='Erreur caméra : '+err.message;
+    const loadingEl=document.getElementById('scanner-loading');
+    if(loadingEl)loadingEl.textContent='❌ Erreur : '+err;
+  }
+}
+
+async function closeScanner(){
+  document.getElementById('scanner-overlay').classList.remove('open');
+  if(html5Scanner){
+    try{
+      if(html5Scanner.isScanning)await html5Scanner.stop();
+    }catch(e){}
+    try{html5Scanner.clear();}catch(e){}
+    html5Scanner=null;
   }
 }
 
 async function fetchBarcode(barcode){
-  document.getElementById('scanner-status-txt').textContent='Recherche...';
   document.getElementById('j-flash').textContent='🔍 Recherche du produit...';
   try{
     const res=await fetch(`https://world.openfoodfacts.org/api/v0/product/${barcode}.json`);
@@ -890,10 +885,10 @@ async function fetchBarcode(barcode){
     const p=data.product;
     const n=p.nutriments;
     const name=p.product_name_fr||p.product_name||p.generic_name||'Produit scanné';
-    const kcal=parseFloat(n['energy-kcal_100g']||n['energy-kcal']||0)||parseFloat((n['energy_100g']||0)/4.184)||0;
-    const gluc=parseFloat(n['carbohydrates_100g']||0)||0;
-    const prot=parseFloat(n['proteins_100g']||0)||0;
-    const lipi=parseFloat(n['fat_100g']||0)||0;
+    const kcal=parseFloat(n['energy-kcal_100g'])||parseFloat((n['energy_100g']||0)/4.184)||0;
+    const gluc=parseFloat(n['carbohydrates_100g'])||0;
+    const prot=parseFloat(n['proteins_100g'])||0;
+    const lipi=parseFloat(n['fat_100g'])||0;
 
     if(!kcal&&!gluc&&!prot&&!lipi){
       alert(`Données nutritionnelles incomplètes pour "${name}".\nVous pouvez l'ajouter manuellement dans l'onglet ➕`);
@@ -901,7 +896,6 @@ async function fetchBarcode(barcode){
       return;
     }
 
-    // Vérifier si déjà dans les perso
     const customs=loadArr(K.CUSTOM);
     const exists=customs.find(x=>x.n.toLowerCase()===name.toLowerCase());
     let savedMsg='';
@@ -914,14 +908,11 @@ async function fetchBarcode(barcode){
     }
 
     const item={n:name,kcal:+kcal.toFixed(1),g:+gluc.toFixed(1),p:+prot.toFixed(1),l:+lipi.toFixed(1)};
-
-    // Afficher résultat scan
     document.getElementById('scan-result-name').textContent=name;
     document.getElementById('scan-result-info').textContent=`${Math.round(kcal)} kcal · G${fmt(gluc)} · P${fmt(prot)} · L${fmt(lipi)} (pour 100g)`;
     document.getElementById('scan-result-saved').textContent=savedMsg;
     document.getElementById('scan-result-card').style.display='block';
     document.getElementById('j-flash').textContent='';
-
     selectJournalItem(item);
 
   }catch(err){
@@ -995,7 +986,6 @@ document.getElementById('btn-save').addEventListener('click',()=>{
   ['f-name','f-kcal','f-gluc','f-prot','f-lipi','f-uname','f-uweight'].forEach(id=>document.getElementById(id).value='');
   renderMyFoods();
 });
-
 function renderMyFoods(){
   const el=document.getElementById('my-foods-list');
   const arr=loadArr(K.CUSTOM);
@@ -1025,7 +1015,6 @@ function renderMyFoods(){
 
 /* ══ RECETTES ══ */
 let mrIngredients=[],editingRecipeId=null;
-
 function updateRecipeCalc(){
   const db=[...CIQUAL,...loadArr(K.CUSTOM)];
   let tw=0,tk=0,tg=0,tp=0,tl=0;
@@ -1039,7 +1028,6 @@ function updateRecipeCalc(){
   document.getElementById('mr-per100').innerHTML=tw>0?`${Math.round(tk/tw*100)} kcal · G${fmt(tg/tw*100)} · P${fmt(tp/tw*100)} · L${fmt(tl/tw*100)}`:'—';
 }
 document.getElementById('mr-nb-units').addEventListener('input',updateRecipeCalc);
-
 function renderModalIngredients(){
   const el=document.getElementById('mr-ingredients');
   if(!mrIngredients.length){el.innerHTML='<div style="font-size:12px;color:var(--text-hint);margin-bottom:8px">Aucun ingrédient ajouté.</div>';updateRecipeCalc();return;}
@@ -1052,7 +1040,6 @@ function renderModalIngredients(){
   el.querySelectorAll('.btn-icon').forEach(btn=>btn.addEventListener('click',()=>{mrIngredients.splice(+btn.dataset.i,1);renderModalIngredients();}));
   updateRecipeCalc();
 }
-
 let mrIngCurrent=null;
 makeSugs(document.getElementById('mr-ing-search'),document.getElementById('mr-ing-sugs'),item=>{mrIngCurrent=item;},false);
 document.getElementById('mr-ing-add').addEventListener('click',()=>{
@@ -1066,7 +1053,6 @@ document.getElementById('mr-ing-add').addEventListener('click',()=>{
   document.getElementById('mr-ing-search').value='';document.getElementById('mr-ing-qty').value='';
   renderModalIngredients();
 });
-
 function renderRecipes(){
   const el=document.getElementById('recipes-list');const recipes=loadArr(K.RECIPES);
   if(!recipes.length){el.innerHTML='<div class="empty-list">Aucune recette.<br>Créez votre première recette !</div>';return;}
@@ -1091,9 +1077,7 @@ function renderRecipes(){
   }));
   el.querySelectorAll('.btn-edit-recipe').forEach(btn=>btn.addEventListener('click',()=>{openRecipeModal(loadArr(K.RECIPES)[+btn.dataset.i]);}));
 }
-
 document.getElementById('btn-new-recipe').addEventListener('click',()=>openRecipeModal(null));
-
 function openRecipeModal(recipe){
   editingRecipeId=recipe?recipe.id:null;
   document.getElementById('mr-title').textContent=recipe?'Modifier la recette':'Nouvelle recette';
@@ -1125,8 +1109,7 @@ document.getElementById('mr-save').addEventListener('click',()=>{
   }else{
     recipes.push({id:Date.now().toString(),name,unitName,unitWeight,nbUnits:nb,ingredients:mrIngredients});
   }
-  saveArr(K.RECIPES,recipes);
-  document.getElementById('modal-recipe').classList.remove('open');renderRecipes();
+  saveArr(K.RECIPES,recipes);document.getElementById('modal-recipe').classList.remove('open');renderRecipes();
 });
 
 /* ══ DÉPENSE ══ */
@@ -1183,7 +1166,6 @@ document.querySelectorAll('.period-btn').forEach(btn=>{
   btn.addEventListener('click',()=>{document.querySelectorAll('.period-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');activeDays=+btn.dataset.days;renderHistory();});
 });
 function getPastDays(n){const d=[];for(let i=n-1;i>=0;i--){const x=new Date();x.setDate(x.getDate()-i);d.push(x.toISOString().slice(0,10));}return d;}
-
 function renderHistory(){
   const j=load(K.JOURNAL);const days=getPastDays(activeDays);
   const cons=days.map(k=>j[k]?Math.round(dayTotals(j[k]).kcal):0);
